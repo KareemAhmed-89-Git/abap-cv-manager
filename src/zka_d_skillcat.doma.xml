@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>ZKA_D_SKILLCAT</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000020</LENG>
+    <OUTPUTLEN>000020</OUTPUTLEN>
+    <LOWERCASE>X</LOWERCASE>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>SKILL Catogery</DDTEXT>
+    <DOMMASTER>E</DOMMASTER>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <DOMNAME>ZKA_D_SKILLCAT</DOMNAME>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>SAP</DOMVALUE_L>
+     <DDTEXT>SAP</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZKA_D_SKILLCAT</DOMNAME>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>LANG</DOMVALUE_L>
+     <DDTEXT>LANG</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZKA_D_SKILLCAT</DOMNAME>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>DB</DOMVALUE_L>
+     <DDTEXT>DB</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZKA_D_SKILLCAT</DOMNAME>
+     <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>WEB</DOMVALUE_L>
+     <DDTEXT>WEB</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <DOMNAME>ZKA_D_SKILLCAT</DOMNAME>
+     <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>TOOL</DOMVALUE_L>
+     <DDTEXT>TOOL</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
