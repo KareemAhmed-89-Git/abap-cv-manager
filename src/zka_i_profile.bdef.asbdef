@@ -1,0 +1,266 @@
+managed implementation in class zbp_ka_i_profile unique;
+strict ( 2 );
+with draft;
+define behavior for ZKA_I_Profile alias Profile
+persistent table zka_profile
+draft table zka_d_profile
+lock master
+total etag LastChangedAt
+authorization master ( global )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  association _Cert { create; with draft; }
+  association _Edu { create; with draft; }
+  association _Exper { create; with draft; }
+  association _Lang { create; with draft; }
+  association _Skill { create; with draft; }
+
+  field (numbering : managed, readonly ) ProfileUuid;
+  field ( readonly )
+  CreatedBy,
+  CreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zka_profile
+  {
+    ProfileUuid = profile_uuid;
+    ProfileNo = profile_no;
+    FirstName = first_name;
+    LastName = last_name;
+    Email = email;
+    Phone = phone;
+    City = city;
+    Country = country;
+    HeadlineDe = headline_de;
+    HeadlineEn = headline_en;
+    PublishedAt = published_at;
+    Status = status;
+    SummaryDe = summary_de;
+    SummaryEn = summary_en;
+    Website = website;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+    LocalLastChangedBy = local_last_changed_by;
+
+  }
+
+
+}
+
+define behavior for ZKA_I_Cert alias Certification
+persistent table zka_cert
+draft table zka_d_cert
+lock dependent by _Profile
+authorization dependent by _Profile
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( numbering : managed , readonly ) CertUuid;
+
+  field ( readonly )
+  ParentUuid,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  LocalLastChangedBy;
+
+  association _Profile { with draft;  }
+
+  mapping for zka_cert {
+
+    CertUuid = cert_uuid;
+    ParentUuid = parent_uuid;
+    CredentialId =credential_id;
+    CredentialUrl = credential_url;
+    ExpiryDate = expiry_date;
+    Issuer = issuer;
+    IssueDate = issue_date;
+    Title = title;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+    LocalLastChangedBy = local_last_changed_by;
+  }
+
+}
+
+define behavior for ZKA_I_Edu alias Education
+persistent table zka_edu
+draft table zka_d_edu
+lock dependent by _Profile
+authorization dependent by _Profile
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( numbering : managed ,readonly ) EduUuid;
+
+  field ( readonly )
+  ParentUuid,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  LocalLastChangedBy;
+
+  association _Profile { with draft; }
+
+  mapping for zka_edu {
+
+  EduUuid = edu_uuid;
+  ParentUuid = parent_uuid;
+  DateFrom = date_from;
+  DateTo = date_to;
+  DegreeDe = degree_de;
+  DegreeEn = degree_en;
+  Institution = institution;
+  City = city;
+  Country = country;
+  CreatedAt = created_at;
+  CreatedBy = created_by;
+  LastChangedAt = last_changed_at;
+  LocalLastChangedAt = local_last_changed_at;
+  LocalLastChangedBy = local_last_changed_by;
+
+
+  }
+
+}
+
+define behavior for ZKA_I_Exper alias Experience
+persistent table zka_exper
+draft table zka_d_exper
+lock dependent by _Profile
+authorization dependent by _Profile
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  association _Profile { with draft; }
+  field ( numbering : managed, readonly )   ExperUuid;
+  field ( readonly )
+  ParentUuid, CreatedBy, CreatedAt,
+                     LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+
+ mapping for zka_exper{
+    ExperUuid = exper_uuid;
+    ParentUuid = parent_uuid;
+    City = city;
+    Company = company;
+    Country = country;
+    DateFrom = date_from;
+    DateTo = date_to;
+    DurationMonths = duration_months;
+    IsCurrent = is_current;
+    RoleDe = role_de;
+    RoleEn =role_en;
+    SortOrder =sort_order;
+    TextDe = text_de;
+    TextEn = text_en;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+    LocalLastChangedBy = local_last_changed_by;
+
+
+ }
+
+}
+
+define behavior for ZKA_I_Lang alias Language
+persistent table zka_lang
+draft table zka_d_lang
+lock dependent by _Profile
+authorization dependent by _Profile
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) LangUuid;
+
+  field ( readonly)
+  ParentUuid,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  LocalLastChangedBy;
+
+  association _Profile { with draft; }
+
+  mapping for zka_lang{
+
+   LangUuid = lang_uuid;
+   ParentUuid = parent_uuid;
+   LangLevel = lang_level;
+   LanguageCode = language_code;
+   LanguageName = language_name;
+   CreatedAt = created_at;
+   CreatedBy = created_by;
+   LastChangedAt = last_changed_at;
+   LocalLastChangedAt = local_last_changed_at;
+   LocalLastChangedBy = local_last_changed_by;
+
+ }
+}
+
+define behavior for ZKA_I_Skill alias Skill
+persistent table zka_skill
+draft table zka_d_skill
+lock dependent by _Profile
+authorization dependent by _Profile
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) SkillUuid;
+
+  field ( readonly)
+  ParentUuid,
+  CreatedAt,
+  CreatedBy,
+  LastChangedAt,
+  LocalLastChangedAt,
+  LocalLastChangedBy;
+
+
+  association _Profile { with draft; }
+
+  mapping for zka_skill
+  {
+    SkillUuid = skill_uuid;
+    ParentUuid = parent_uuid;
+    Category = category;
+    IsHighlight = is_highlight;
+    SkillLevel = skill_level;
+    SkillName = skill_name;
+    CreatedAt = created_at;
+    CreatedBy = created_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+    LocalLastChangedBy = local_last_changed_by;
+  }
+}
