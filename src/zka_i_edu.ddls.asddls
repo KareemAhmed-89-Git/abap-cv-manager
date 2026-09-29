@@ -1,7 +1,7 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'CV Education'
-@Metadata.ignorePropagatedAnnotations: true
+@Metadata.allowExtensions: true
 define view entity ZKA_I_Edu as select from zka_edu
 association to parent ZKA_I_Profile as _Profile
     on $projection.ParentUuid = _Profile.ProfileUuid

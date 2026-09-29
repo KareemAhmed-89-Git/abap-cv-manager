@@ -1,0 +1,67 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+  typeName:       'Experience',
+  typeNamePlural: 'Experiences',
+  title:          { type: #STANDARD, value: 'RoleEn' },
+  description:    { type: #STANDARD, value: 'Company' }
+}
+annotate entity ZKA_C_Exper with
+{
+  @UI.facet: [
+    { id: 'Details', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Details', position: 10 }
+  ]
+  @UI.hidden: true
+  ExperUuid;
+
+  @UI.hidden: true
+  ParentUuid;
+
+  @UI: { lineItem: [{ position: 10 }], identification: [{ position: 10 }] }
+  @EndUserText.label: 'Role (EN)'
+  RoleEn;
+
+  @UI.identification: [{ position: 20 }]
+  @EndUserText.label: 'Role (DE)'
+  RoleDe;
+
+  @UI: { lineItem: [{ position: 20 }], identification: [{ position: 30 }] }
+  @EndUserText.label: 'Company'
+  Company;
+
+  @UI: { lineItem: [{ position: 30 }], identification: [{ position: 40 }] }
+  @EndUserText.label: 'From'
+  DateFrom;
+
+  @UI: { lineItem: [{ position: 40 }], identification: [{ position: 50 }] }
+  @EndUserText.label: 'To'
+  DateTo;
+
+  @UI: { lineItem: [{ position: 50 }], identification: [{ position: 60 }] }
+  @EndUserText.label: 'Current Job'
+  IsCurrent;
+
+  @UI.identification: [{ position: 70 }]
+  City;
+
+  @UI.identification: [{ position: 80 }]
+  Country;
+
+  @UI: { identification: [{ position: 90 }], multiLineText: true }
+  @EndUserText.label: 'Description (EN)'
+  TextEn;
+
+  @UI: { identification: [{ position: 100 }], multiLineText: true }
+  @EndUserText.label: 'Description (DE)'
+  TextDe;
+
+  @UI: { lineItem: [{ position: 60 }], identification: [{ position: 110 }] }
+  @EndUserText.label: 'Months'
+  DurationMonths;
+
+  @UI.hidden: true
+  SortOrder;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

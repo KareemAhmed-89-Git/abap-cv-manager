@@ -1,0 +1,62 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZKA_C_Profile alias Profile
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _Cert { create; with draft; }
+  use association _Edu { create; with draft; }
+  use association _Exper { create; with draft; }
+  use association _Lang { create; with draft; }
+  use association _Skill { create; with draft; }
+}
+
+define behavior for ZKA_C_Cert alias Certification
+{
+  use update;
+  use delete;
+
+  use association _Profile { with draft; }
+}
+
+define behavior for ZKA_C_Edu alias Education
+{
+  use update;
+  use delete;
+
+  use association _Profile { with draft; }
+}
+
+define behavior for ZKA_C_Exper alias Experience
+{
+  use update;
+  use delete;
+
+  use association _Profile { with draft; }
+}
+
+define behavior for ZKA_C_Lang alias Language
+{
+  use update;
+  use delete;
+
+  use association _Profile { with draft; }
+}
+
+define behavior for ZKA_C_Skill alias Skill
+{
+  use update;
+  use delete;
+
+  use association _Profile { with draft; }
+}

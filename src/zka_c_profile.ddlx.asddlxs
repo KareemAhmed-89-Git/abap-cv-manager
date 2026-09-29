@@ -1,0 +1,83 @@
+@Metadata.layer: #CORE
+@UI.headerInfo : { 
+    typeName: 'Profile',
+    typeNamePlural: 'Profiles',
+    title: { type: #STANDARD, value: 'LastName' },
+    description:{ type: #STANDARD, value: 'HeadlineEn' }
+}
+annotate entity ZKA_C_Profile
+    with 
+{
+    @UI.facet: [
+    { id: 'General',     purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'General',        position: 10 },
+    { id: 'Experience',  purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      label: 'Experience',     position: 20, targetElement: '_Exper' },
+    { id: 'Education',   purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      label: 'Education',      position: 30, targetElement: '_Edu' },
+    { id: 'Skills',      purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      label: 'Skills',         position: 40, targetElement: '_Skill' },
+    { id: 'Languages',   purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      label: 'Languages',      position: 50, targetElement: '_Lang' },
+    { id: 'Certificates', purpose: #STANDARD, type: #LINEITEM_REFERENCE,
+      label: 'Certifications', position: 60, targetElement: '_Cert' }
+    
+      ]
+      
+  @UI.hidden: true
+  ProfileUuid;
+  
+  @UI:{ lineItem: [{ position: 10 }], identification: [{ position: 10 }]}
+  ProfileNo;
+  
+  @UI: { lineItem: [{ position: 20 }], identification: [{ position: 20 }] }
+  @EndUserText.label: 'First Name'
+  FirstName;
+  
+  @UI: { lineItem: [{ position: 30 }], identification: [{ position: 30 }] }
+  @EndUserText.label: 'Last Name'
+  LastName;
+  
+  @UI: { lineItem: [{ position: 40 }], identification: [{ position: 40 }] }
+  @EndUserText.label: 'Headline (EN)'
+  HeadlineEn;
+  
+  @UI.identification: [{ position: 50 }]
+  @EndUserText.label: 'Headline (DE)'
+  HeadlineDe;
+  
+  @UI: { lineItem: [{ position: 60 }], identification: [{ position: 60 }] }
+  City;
+  
+  @UI.identification: [{ position: 70 }]
+  Country;
+  
+  @UI.identification: [{ position: 80 }]
+  Email;
+
+  @UI.identification: [{ position: 90 }]
+  Phone;
+
+  @UI.identification: [{ position: 100 }]
+  Website;
+
+  @UI: { identification: [{ position: 110 }], multiLineText: true }
+  @EndUserText.label: 'Summary (EN)'
+  SummaryEn;
+
+  @UI: { identification: [{ position: 120 }], multiLineText: true }
+  @EndUserText.label: 'Summary (DE)'
+  SummaryDe;
+
+  @UI: { lineItem: [{ position: 70 }], identification: [{ position: 130 }] }
+  Status;
+
+  @UI.identification: [{ position: 140 }]
+  @EndUserText.label: 'Published'
+  PublishedAt;
+
+  @UI.hidden: true
+  LocalLastChangedAt;    
+      
+    
+}

@@ -1,0 +1,9 @@
+@EndUserText.label: 'CV Manager - UI Service'
+define service ZKA_UI_PROFILE {
+  expose ZKA_C_Profile;
+  expose ZKA_C_Exper   as Experience;
+  expose ZKA_C_Edu     as Education;
+  expose ZKA_C_Skill   as Skill;
+  expose ZKA_C_Lang    as Language;
+  expose ZKA_C_Cert    as Certification;
+}

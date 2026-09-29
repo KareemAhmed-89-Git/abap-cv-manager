@@ -1,0 +1,47 @@
+@Metadata.layer: #CORE
+@UI.headerInfo:{
+    typeName: 'Eduction', typeNamePlural: 'eductions',
+    title:{type: #STANDARD, value: 'DegreeEn'},
+    description:{ type: #STANDARD, value: 'Institution'}
+}
+annotate entity ZKA_C_Edu
+    with 
+{
+   @UI.facet: [{ 
+    id: 'Details', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Details', position: 10 }]
+    @UI.hidden: true
+    EduUuid;
+    
+    @UI.hidden: true
+    ParentUuid;
+    
+    @UI:{lineItem: [{ position: 10 }], identification: [{ position: 10  }]}
+    @EndUserText.label: 'Degree (EN)'
+    DegreeEn;
+    
+    @UI:{ lineItem: [{ position: 20  }], identification: [{ position: 20 }] }
+    @EndUserText.label: 'Degree (DE)'
+    DegreeDe;
+    
+    @UI: { lineItem: [{ position: 20 }], identification: [{ position: 30 }] }
+    @EndUserText.label: 'Institution'
+    Institution;
+    
+    @UI: { lineItem: [{ position: 30 }], identification: [{ position: 40 }] }
+    @EndUserText.label: 'Fromn'
+    DateFrom;
+    
+    @UI: { lineItem: [{ position: 40 }], identification: [{ position: 50 }] }
+    @EndUserText.label: 'To'
+    DateTo;
+    
+    @UI.identification: [{ position: 60 }]
+    City;
+    
+    @UI.identification: [{ position: 70 }]
+    Country;
+
+    @UI.hidden: true
+    LocalLastChangedAt;
+    
+}
