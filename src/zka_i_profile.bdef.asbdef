@@ -31,7 +31,12 @@ etag master LocalLastChangedAt
   draft action Activate optimized;
   draft action Discard;
   draft action Resume;
-  draft determine action Prepare;
+  draft determine action Prepare{
+    validation Experience~validateDates;
+    validation Experience~validateCurrent;
+    validation Education~validateDates;
+    validation Skill~validateLevel;
+  }
 
   mapping for zka_profile
   {
@@ -122,7 +127,11 @@ etag master LocalLastChangedAt
   LocalLastChangedAt,
   LocalLastChangedBy;
 
+  validation validateDates on save { create; field DateFrom, DateTo;}
+
   association _Profile { with draft; }
+
+
 
   mapping for zka_edu {
 
@@ -161,6 +170,9 @@ etag master LocalLastChangedAt
   field ( readonly )
   ParentUuid, CreatedBy, CreatedAt,
                      LocalLastChangedBy, LocalLastChangedAt, LastChangedAt;
+
+    validation validateDates  on save { create; field DateFrom, DateTo; }
+    validation validateCurrent on save { create; field IsCurrent, DateTo; }
 
  mapping for zka_exper{
     ExperUuid = exper_uuid;
@@ -246,7 +258,7 @@ etag master LocalLastChangedAt
   LocalLastChangedAt,
   LocalLastChangedBy;
 
-
+    validation validateLevel on save { create; field SkillLevel; }
   association _Profile { with draft; }
 
   mapping for zka_skill
